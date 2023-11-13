@@ -1,0 +1,13 @@
+<div>
+    <h1>Create a new Warehouse</h1>
+    <form action="{{ url_for('warehouse_bp.Warehouse_new_submit') }}" method="post" >
+        <input type="hidden" id="id" name="id" >
+        <label for="name">Warehouse name:</label>
+        <input type="text" id="name" name="name" placeholder="test name" ><br><br>
+        <label for="address">Warehouse Address:</label>
+        <input type="text" id="address" name="address" placeholder="300 W 150 St, New York, New York" ><br><br>
+        <label for="capacity">Warehouse Capcity:</label>
+        <input type="text" id="capacity" name="capacity" placeholder="100000" ><br><br>
+        <input type="submit" value="Submit">
+      </form>
+</div>

@@ -1,0 +1,61 @@
+<h1>Inventories hold by Warehouse {{warehouse_info[0][2]}}</h1>
+<h2>Capacity: {{warehouse_info[0][3]}}</h2>
+<h2>Current Load: {{warehouse_info[0][4]}}</h2>
+<table >
+    <tr>
+      <th>Name</th>
+      <th>Price</th> 
+      <th>Current Amount</th>
+
+    </tr>
+    {% if warehouse_info[0][5] != None %}
+
+    {% for holded_inventories in warehouse_info %}
+    <tr>
+      
+      <td>{{holded_inventories[6]}}</td>
+      <td>{{holded_inventories[7]}}</td>
+      <td>{{holded_inventories[10]}}</td>
+      <td>    <form action="http://localhost:8000/warehouses/{{warehouse_info[0][0]}}/remove" method="post" >
+        <input type="hidden" id="w_id" name="w_id" value={{warehouse_info[0][0]}}>
+        <input type="hidden" id="i_id" name="i_id" value={{holded_inventories[5]}}>
+        <input id="remove" name="remove" value=0>
+        <input type="submit" value="Remove">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+  </table>
+
+<h1>Inventories waiting to be allocated</h1>
+<table >
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th> 
+      <th>Amount</th>
+      <th>Not Allocated</th>
+
+    </tr>
+    {% for inventory in all_inventories %}
+    <tr>
+      <td>{{inventory['id']}}</td>
+      <td>{{inventory['name']}}</td>
+      <td>{{inventory['price']}}</td>
+      <td>{{inventory['amount']}}</td>
+      <td>{{inventory['not_allocated']}}</td>
+      <td>    <form action="http://localhost:8000/warehouses/{{warehouse_info[0][0]}}/add" method="post" >
+        <input type="hidden" id="i_id" name="i_id" value={{inventory.id}}>
+        <input type="hidden" id="w_id" name="w_id" value={{warehouse_info[0][0]}}>
+        <input id="add" name="add" value=0>
+        <input type="submit" value="Add">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <form action="{{ url_for('home_bp.home') }}"  >
+    <input type="submit" value="Back to home">
+  </form>

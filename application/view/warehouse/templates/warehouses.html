@@ -1,0 +1,54 @@
+<tbody>
+    <h1>Warehouse List</h1>
+    <h2>You can edit, delete existing warehouses,</h2>
+    <h2>Or add new warehouses by clicking "Add new warehouses" button</h2>
+    <h2>To add/remove inventory from warehouse, click "manage"</h2>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+    <table>
+      <tr>
+        <th>Warehouse ID</th>
+        <th>Name </th>
+        <th>Warehouse Address</th>
+        <th>Capacity</th> 
+        <th>Current Load</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Manage</th>
+  
+      </tr>
+      {% for warehouse in warehouses %}
+      <tr>
+        <td>{{warehouse['id']}}</td>
+        <td>{{warehouse['name']}}</td>
+        <td>{{warehouse['address']}}</td>
+        <td>{{warehouse['capacity']}}</td>
+        <td>{{warehouse['current_load']}}</td>
+        <td>{{warehouse['created_time']}}</td>
+        <td>{{warehouse['updated_time']}}</td>
+        <td><a href="http://localhost:8000/warehouses/{{warehouse['id']}}/edit">Edit</a></td>
+        <td><a href="http://localhost:8000/warehouses/{{warehouse['id']}}/delete">Delete</a></td>
+        <td><a href="http://localhost:8000/warehouses/{{warehouse['id']}}">Manage</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <form action="{{ url_for('warehouse_bp.warehouses_new') }}"  >
+      <input type="submit" value="Add new warehouses">
+    </form>
+  
+    <form action="{{ url_for('home_bp.home') }}"  >
+      <input type="submit" value="Back to home">
+    </form>
+
+    
+</tbody>
+

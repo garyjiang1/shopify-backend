@@ -1,0 +1,13 @@
+<div>
+    <h1>Create a new inventory</h1>
+    <form action="{{ url_for('inventory_bp.Inventory_new_submit') }}" method="post" >
+        <input type="hidden" id="id" name="id" >
+        <label for="name">Inventory name:</label>
+        <input type="text" id="name" name="name" ><br><br>
+        <label for="lname">price:</label>
+        <input type="text" id="price" name="price" ><br><br>
+        <label for="lname">amount:</label>
+        <input type="text" id="amount" name="amount" v><br><br>
+        <input type="submit" value="Submit">
+      </form>
+</div>

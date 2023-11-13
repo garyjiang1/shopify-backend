@@ -1,0 +1,46 @@
+<h1>Welcome to Inventory list</h1>
+<h2>You can edit, delete existing inventory</h2>
+<h2>Or click "Add new Inventory" to create a new one</h2>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<table>
+    <tr>
+      <th>Inventory ID</th>
+      <th>Inventory Name</th>
+      <th>Price</th> 
+      <th>Amount</th>
+      <th>Not Allocated</th>
+      <th>Last Update</th>
+      <th>Edit</th>
+      <th>Delete</th>
+
+    </tr>
+    {% for inventory in all_inventories %}
+    <tr>
+      <td>{{inventory['id']}}</td>
+      <td>{{inventory['name']}}</td>
+      <td>{{inventory['price']}}</td>
+      <td>{{inventory['amount']}}</td>
+      <td>{{inventory['not_allocated']}}</td>
+      <td>{{inventory['updated_time']}}</td>
+      <td><a href="http://localhost:8000/inventories/{{inventory['id']}}/edit">edit</a></td>
+      <td><a href="http://localhost:8000/inventories/{{inventory['id']}}/delete">delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <form action="{{ url_for('inventory_bp.inventories_new') }}"  >
+    <input type="submit" value="Add new inventories">
+  </form>
+
+  <form action="{{ url_for('home_bp.home') }}"  >
+    <input type="submit" value="Back to home">
+  </form>

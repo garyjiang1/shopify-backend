@@ -1,0 +1,16 @@
+<h1>Edit Warehouse</h1>
+<div>
+    <form action="{{ url_for('warehouse_bp.Warehouse_edit_submit') }}" method="post" >
+        <input type="hidden" id="id" name="id" value={{warehouse.id}}>
+        <label for="name">Warehouse name:</label>
+        <input type="text" id="name" name="name" value={{warehouse.name}}><br><br>
+        <label for="address">address:</label>
+        <input type="text" id="address" name="address" value={{warehouse.address}}><br><br>
+        <label for="capacity">capacity:</label>
+        <input type="text" id="capacity" name="capacity" value={{warehouse.capacity}}><br><br>
+        <input type="submit" value="Submit">
+      </form>
+</div>
+
+<h1>Important Note:</h1>
+<h2>New Capacity should not be lower than current load.</h2>
