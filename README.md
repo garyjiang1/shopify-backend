@@ -40,8 +40,8 @@ and download Docker based on your operating system.
 Once you have Docker installed, clone this repository:
 
 ```bash
-git clone https://github.com/YowKuan/Shopify-Backend-Project.git
-cd Shopify-Backend-Project 
+git clone https://github.com/garyjiang1/shopify-backend.git
+cd shopify-backend
 ```
 
 Run Docker Compose
